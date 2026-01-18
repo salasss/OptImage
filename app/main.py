@@ -2,13 +2,14 @@ import time
 from fastapi import FastAPI, UploadFile, File, BackgroundTasks, HTTPException
 from app.services.image_processor import process_image
 from fastapi.responses import StreamingResponse
+from prometheus_fastapi_instrumentator import Instrumentator
 #INIT
 app = FastAPI(
     title="Image Optimizer API",
     description="Microservice d'optimisation d'images",
     version="0.0.1"
 )
-
+Instrumentator().instrument(app).expose(app)
 #base route
 @app.get("/")
 async def root():
