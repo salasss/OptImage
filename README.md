@@ -1,19 +1,27 @@
 # Image Optimizer API
-![Python Version](https://img.shields.io/badge/python-3.11-blue?style=for-the-badge&logo=python)
+![Python Version](https://img.shields.io/badge/python-3.12-blue?style=for-the-badge&logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688?style=for-the-badge&logo=fastapi)
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker)
 ![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge)
-A lightweight microservice for optimizing and resizing images using FastAPI.
+A high-performance, Cloud Native microservice for optimizing and resizing images using FastAPI.
 
 ## Features
 
+- **High Performance** : Non-blocking I/O with asyncio & offloaded CPU tasks
+- **Stateless Design** : Fully decoupled architecture suitable for K8s or Serverless
 - **Image Optimization** : Compress images while maintaining quality
 - **Image Resizing** : Resize images with aspect ratio preservation
 - **Format Conversion** : Convert images to WebP, JPEG, or PNG
 - **Background Tasks** : Archive original images asynchronously
-- **Health Checks** : Monitor API health status
-- **Metrics** : Prometheus metrics for monitoring
+- **Observability** : Prometheus metrics & Health checks built-in
+
+## Architecture
+
+Built as a **Cloud Native Microservice**, this project emphasizes:
+1. **Asynchronous Proccessing**: CPU-intensive image processing is offloaded to thread pools to ensure the main Event Loop remains non-blocking.
+2. **Stateless Scalability**: No local disk persistence; all processing uses in-memory buffers (`io.BytesIO`), allowing horizontal scaling without side effects.
+3. **Observability**: Native integration with Prometheus for real-time monitoring.
 
 ## Installation
 
