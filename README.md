@@ -1,5 +1,9 @@
 # Image Optimizer API
-
+![Python Version](https://img.shields.io/badge/python-3.11-blue?style=for-the-badge&logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688?style=for-the-badge&logo=fastapi)
+![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker)
+![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge)
 A lightweight microservice for optimizing and resizing images using FastAPI.
 
 ## Features
