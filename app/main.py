@@ -1,4 +1,5 @@
 import time
+import asyncio
 from fastapi import FastAPI, UploadFile, File, BackgroundTasks, HTTPException
 from app.services.image_processor import process_image
 from fastapi.responses import StreamingResponse
@@ -35,7 +36,8 @@ async def optimize_image_endpoint(bg_tasks: BackgroundTasks,file : UploadFile = 
     bg_tasks.add_task(archive_task_image,file.filename,len(content))
     #traitement cpu bound
     try:
-        opti_buffer = process_image(
+        opti_buffer = await asyncio.to_thread(
+            process_image,
             content,
             width=width,
             height=height,
